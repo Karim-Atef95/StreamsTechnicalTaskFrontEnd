@@ -1,0 +1,14 @@
+<div class="container">
+    <h1 class="text-center text-decoration-underline m-3">Single Document Details</h1>
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Document Name: </strong>  {{document.name}}   </li>
+        <li class="list-group-item"><strong> Creation Date:</strong> {{document.creationDate}}</li>
+        <li class="list-group-item"><strong> Due Date:</strong>  {{document.dueDate}}</li>
+        <li class="list-group-item"><strong> Priority Status: </strong>{{document.priority.status}}</li>
+        <li class="list-group-item"><strong> Files:</strong></li>
+        <li 
+        class="list-group-item"
+        *ngFor="let file of document.fileModels"
+        ><strong> File Path: </strong>{{file.filePath}}</li>
+    </ul>
+</div>

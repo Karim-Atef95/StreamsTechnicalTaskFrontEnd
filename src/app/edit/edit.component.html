@@ -1,0 +1,47 @@
+<div class="container">
+    <h1 class="text-center text-decoration-underline mb-4">Edit Document</h1>
+<div class="row" *ngIf="document">
+    <form #editForm="ngForm" (ngSubmit)="onSave()" class="mb-3">
+        <!-- input name -->
+        <label class="form-label"><strong>Document Name</strong></label>
+        <input type="text" name="name" [(ngModel)]="document.name" class="form-control" style="width:40%;">
+        <div  class="form-text mb-1" style="width:40%;">
+        Your document name must be 8-20 characters long, contains only letters, and must not contain special characters, or emoji.
+        </div>
+        <!-- input creation date -->
+        <label class="form-label"><strong>Creation Date</strong></label>
+        <input type="date" name="createDate" [(ngModel)]="document.creationDate" class="form-control" style="width:40%;">
+        <div class="form-text mb-1">
+        Kindly choose your creation date.
+        </div>
+        <!-- input due date -->
+        <label class="form-label"><strong>Due Date</strong></label>
+        <input type="date" name="dueDate" [(ngModel)]="document.dueDate" class="form-control" style="width:40%;"  >
+        <div  class="form-text mb-1">
+        Kindly choose your due date.
+        </div>
+        <!-- input priority -->
+        <label class="form-label"><strong>Priority</strong></label>
+        <input type="text" name="priority" [(ngModel)]="document.priority.status" class="form-control" style="width:40%;">
+        <div  class="form-text mb-2" style="width:40%;">
+        Your priority must be (1,2,3) and 1 is the highest priority.
+        </div>
+        <!-- input file-->
+        <input class="form-control mb-1" style="width:40%;" type="file" #file (change)="insertFile($event)" multiple/>
+        <div  class="form-text mb-2" style="width:40%;">
+            You can add more than one file
+        </div>            
+        <!-- submit button -->
+        <button 
+        style="width:40%;" 
+        class="btn btn-primary" 
+        type="submit"
+        >
+        Save</button>
+    </form>
+</div>
+<button 
+class="btn btn-primary"
+[routerLink]="['/d']"
+>Show Directory</button>
+</div>

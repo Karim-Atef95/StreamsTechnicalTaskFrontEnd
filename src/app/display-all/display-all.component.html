@@ -1,0 +1,49 @@
+<div class="container">
+    <h1 class="text-center text-decoration-underline m-3">List of all documents</h1>
+    <table class="table">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">Serial Number</th>
+            <th scope="col">Document Name</th>
+            <th scope="col">Creation Date</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Priority(1 for critical priority)</th>
+            <th scope="col">Files</th>
+            <th scope="col text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let document of documents; let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{document.name}}</td>
+                <td>{{document.creationDate}}</td>
+                <td>{{document.dueDate}}</td>
+                <td>{{document.priority.status}}</td>
+                <td>
+                    <div class="col-auto">
+                        <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+                        <select class="form-select" id="autoSizingSelect">
+                        <option *ngFor="let file of document.fileModels">{{file.filePath}}</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="row">
+                        <button 
+                        class="col ms-1 btn btn-primary"
+                        [routerLink]="['/e',document.id]">Edit</button>
+                        <button 
+                        class="col ms-1 btn btn-danger" 
+                        (click)="deleteDocument(document.id)">Delete</button>
+                        <button 
+                        class="col ms-1 btn btn-secondary"
+                        [routerLink]="['/ds',document.id]">Display</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+      <button class="col ms-1 btn btn-primary"[routerLink]="['']">Add New Document</button>
+    
+
+</div>
